@@ -3,10 +3,11 @@
 
 ;; set variables
 ;;;;;;;;;;;;;;;;
+(setq home (getenv "HOME"))
 (setq emacs-dir (concat (getenv "HOME") "/basimplemacs/"))
 (setq plugins-dir (concat emacs-dir "plugins/"))
 (setq elpa-dir (concat emacs-dir "elpa/"))
-
+(setq org-directory (concat home "/org/"))
 ;; set load path
 (add-to-list 'load-path plugins-dir)
 
@@ -317,7 +318,7 @@
 
 ;; Bongo
 ;;;;;;;;;;;;;;;;
-(add-to-list 'load-path (concat elisp-dir "bongo/"))
+(add-to-list 'load-path (concat plugins-dir "bongo/"))
 (autoload 'bongo "bongo"
   "Start Bongo by switching to a Bongo buffer." t)
 
@@ -383,8 +384,8 @@
 ;; (require 'xcscope)
 ;; cscope
 ;;;;;;;;;;;;;;;;
-(require 'xcscope)
-(add-hook 'java-mode-hook (function cscope:hook))
+;; (require 'xcscope)
+;; (add-hook 'java-mode-hook (function cscope:hook))
 
 ;; (setq cscope-database-regexps
 ;;       '(
@@ -408,19 +409,19 @@
 ;;    that specifying "global-map" instead of "cscope:map" makes the
 ;;    keybindings available in all buffers:
 ;;
-(define-key global-map [(control f3)]  'cscope-set-initial-directory)
-(define-key global-map [(control f4)]  'cscope-unset-initial-directory)
-(define-key global-map [(control f5)]  'cscope-find-this-symbol)
-(define-key global-map [(control f6)]  'cscope-find-global-definition)
-(define-key global-map [(control f7)]
-  'cscope-find-global-definition-no-prompting)
-(define-key global-map [(control f8)]  'cscope-pop-mark)
-(define-key global-map [(control f9)]  'cscope-next-symbol)
-(define-key global-map [(control f10)] 'cscope-next-file)
-(define-key global-map [(control f11)] 'cscope-prev-symbol)
-(define-key global-map [(control f12)] 'cscope-prev-file)
-(define-key global-map [(meta f9)]  'cscope-display-buffer)
-(define-key global-map [(meta f10)] 'cscope-display-buffer-toggle)
+;; (define-key global-map [(control f3)]  'cscope-set-initial-directory)
+;; (define-key global-map [(control f4)]  'cscope-unset-initial-directory)
+;; (define-key global-map [(control f5)]  'cscope-find-this-symbol)
+;; (define-key global-map [(control f6)]  'cscope-find-global-definition)
+;; (define-key global-map [(control f7)]
+;;   'cscope-find-global-definition-no-prompting)
+;; (define-key global-map [(control f8)]  'cscope-pop-mark)
+;; (define-key global-map [(control f9)]  'cscope-next-symbol)
+;; (define-key global-map [(control f10)] 'cscope-next-file)
+;; (define-key global-map [(control f11)] 'cscope-prev-symbol)
+;; (define-key global-map [(control f12)] 'cscope-prev-file)
+;; (define-key global-map [(meta f9)]  'cscope-display-buffer)
+;; (define-key global-map [(meta f10)] 'cscope-display-buffer-toggle)
 
 ;; CEDET
 ;;;;;;;;;;;;;;;;
