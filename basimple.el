@@ -63,14 +63,23 @@
 
 ;; set gui
 ;;;;;;;;;;;;;;;;
-(menu-bar-mode 1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(display-time-mode 1)
-(show-paren-mode 1)
-(ido-mode -1)
-(fringe-mode nil)
-(scroll-bar-mode -1)
+(if (fboundp 'menu-bar-mode)
+    (menu-bar-mode 1))
+(if (fboundp 'tool-bar-mode)
+    (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode)
+    (scroll-bar-mode -1))
+(if (fboundp 'display-time-mode)
+    (display-time-mode 1))
+(if (fboundp 'show-paren-mode)
+    (show-paren-mode 1))
+(if (fboundp 'ido-mode)
+    (ido-mode -1))
+(if (fboundp 'fringe-mode)
+    (fringe-mode -1))
+(if (fboundp 'scroll-bar-mode)
+    (scroll-bar-mode -1))
+
 ;; Set Frame Title
 ;;;;;;;;;;;;;;;;
 (setq frame-title-format '("%b:%f:%s"))
@@ -83,9 +92,9 @@
 ;; change from yes/no 2 y/n.
 ;;;;;;;;;;;;;;;;
 (defalias 'yes-or-no-p 'y-or-n-p)
-  
+
 (global-set-key (kbd "S-SPC") 'toggle-korean-input-method)
-  
+
 ;; Setting for font
 (if (eq system-type 'darwin)
     (progn
@@ -143,8 +152,8 @@
 ;; TransparentEmacs
 ;;;;;;;;;;;;;;;;
 ;;(set-frame-parameter (selected-frame) 'alpha '(<active> [<inactive>]))
-(set-frame-parameter (selected-frame) 'alpha '(95 85))
-(add-to-list 'default-frame-alist '(alpha 95 85))
+(set-frame-parameter (selected-frame) 'alpha '(90 80))
+(add-to-list 'default-frame-alist '(alpha 90 80))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -209,6 +218,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; plugins
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; http://www.emacswiki.org/emacs/AutoAsyncByteCompile
+;;;;;;;;;;;;;;;;
+(require 'auto-async-byte-compile)
+;; (setq auto-async-byte-compile-exclude-files-regexp "/junk/")
+(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 
 ;; fullscreen with wmctrl
 ;;;;;;;;;;;;;;;;
@@ -220,7 +234,7 @@
       (global-set-key [f11] 'basimple:switch-full-screen)
       )
   )
-    
+
 ;; Anything
 ;;;;;;;;;;;;;;;;
 (require 'anything)
@@ -304,14 +318,41 @@
 ;; BrowseUrl [[http://www.emacswiki.org/emacs/BrowseUrl#toc9]]
 ;;;;;;;;;;;;;;;;
 ;; On arch linux, the following command will allow emacs to use the chromium-browser PKGBUILD:
-(setq browse-url-browser-function 'browse-url-generic
-      ;; browse-url-generic-program "google-chrome"
-      browse-url-generic-program "firefox-trunk"
-      ;; browse-url-generic-program "firefox"
-      )
+(if (eq system-type 'gnu/linux)
+    (setq browse-url-browser-function 'browse-url-generic
+	  browse-url-generic-program "google-chrome"
+	  ;; browse-url-generic-program "firefox-trunk"
+	  ;; browse-url-generic-program "firefox"
+	  )
+  (if (eq system-type 'darwin)
+      (progn
+	
+	)
+    ))
+
+(defun browse-url-default-macosx-browser (url &optional new-window)
+  (interactive (browse-url-interactive-arg "URL: "))
+  (if (and new-window (>= emacs-major-version 23))
+      (ns-do-applescript
+       (format (concat "tell application \"Safari\" to make document with properties {URL:\"%s\"}\n"
+		       "tell application \"Safari\" to activate") url))
+    (start-process (concat "open " url) nil "open" url)))
+
+
 
 ;; [[http://www.emacswiki.org/emacs/ClusterSSH:ccsh]]
 ;;;;;;;;;;;;;;;;
+;; (add-hook 'dired-mode-hook
+;;   	  '(lambda ()
+;; 	     (define-key dired-mode-map "o" 'dired-open-mac)))
+;; (define-key dired-mode-map "o" 'dired-open-mac)
+
+;; (defun dired-open-mac ()
+;;   (interactive)
+;;   (let ((file-name (dired-get-file-for-visit)))
+;;     (if (file-exists-p file-name)
+;; 	(call-process "/usr/bin/open" nil 0 nil file-name))))
+
 ;; (require 'cssh)
 
 ;; Bongo
@@ -437,8 +478,8 @@
 ;; elpa
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq package-user-dir
-  (concat emacs-dir "elpa/")
-  )
+      (concat emacs-dir "elpa/")
+      )
 (load "package")
 (package-initialize)
 ;;; This was installed by package-install.el.
