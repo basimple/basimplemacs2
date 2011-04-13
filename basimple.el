@@ -363,7 +363,7 @@
 ;;;;;;;;;;;;;;;;
 (add-to-list 'load-path (concat plugins-dir "android-mode/"))
 (require 'android-mode)
-(setq android-mode-sdk-dir (getenv "ANDROID_SDK")))
+(setq android-mode-sdk-dir (getenv "ANDROID_SDK"))
 
 ;; autoinstall
 ;;;;;;;;;;;;;;;;
