@@ -43,19 +43,16 @@
 ;;;;;;;;;;;;;;;;
 ;; sh을 통해 실행되지 않을 경우엔 PASS가 적용되지 않는다.
 
-    ;; (progn 
-    ;;   (setenv "ANDROID_SDK"
-    ;; 	      "/opt/android-sdk-linux_x86")
-    ;;   (setenv "PATH"
-    ;; 	      (concat
-    ;; 	       (getenv "PATH") ":"
-    ;; 	       "/usr/local/bin" ":"
-    ;; 	       "/opt/android-sdk-linux_x86/tools" ":"
-    ;; 	       "/opt/android-sdk-linux_x86/platform-tools"
-    ;; 	       ))
-    ;;   )
-
-
+(progn 
+  (setenv "ANDROID_SDK"
+		  "/Users/basimple/Deveopment/SDK/android-sdk-mac_x86")
+  (setenv "PATH"
+		  (concat
+		   (getenv "PATH") ":"
+		   (getenv "ANDROID_SDK") ":"
+				   (concat (getenv "ANDROID_SDK") "/tools/")
+				   ))
+		  )
 
 (global-set-key (kbd "S-SPC") 'toggle-korean-input-method)
 
