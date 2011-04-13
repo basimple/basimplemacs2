@@ -1,58 +1,3 @@
-;; using common lisp
-(require 'cl)
-
-;; set variables
-;;;;;;;;;;;;;;;;
-(setq home (getenv "HOME"))
-(setq emacs-dir (concat (getenv "HOME") "/basimplemacs/"))
-(setq plugins-dir (concat emacs-dir "plugins/"))
-(setq elpa-dir (concat emacs-dir "elpa/"))
-(setq org-directory (concat home "/org/"))
-;; set load path
-(add-to-list 'load-path plugins-dir)
-
-;; set builtin variable
-(setq custom-file (concat emacs-dir "custom.el"))
-(setq x-select-enable-clipboard t) ; os의 clipboard 공유하기
-(setq font-use-system-font nil)
-(setq tab-width 4)
-(setq current-language-environment "UTF-8")
-(setq default-input-method "korean-hangul")
-(setq inhibit-startup-screen t) ; 시작화면 보이지 않기
-
-;; key binding
-(global-set-key (kbd "C-x C-m") 'execute-extended-command) ;execute-extend-command -> meta+m
-
-;; shell
-;;;;;;;;;;;;;;;;
-(defalias 'sh 'eshell)
-(global-set-key (kbd "<f5>") 'eshell)
-
-
-
-;; set gui
-;;;;;;;;;;;;;;;;
-(menu-bar-mode 1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(display-time-mode 1)
-(show-paren-mode 1)
-(ido-mode -1)
-(fringe-mode nil)
-(scroll-bar-mode -1)
-;; Set Frame Title
-;;;;;;;;;;;;;;;;
-(setq frame-title-format '("%b:%f:%s"))
-
-;; (setq truncate-partial-width-windows nil)
-(setq truncate-lines nil) ; (아래나 위를 잘라서) 길이를 줄이다[짧게 하다]
-(visual-line-mode -1)
-(setq pop-up-frames nil)
-(global-auto-revert-mode -1)
-;; change from yes/no 2 y/n.
-;;;;;;;;;;;;;;;;
-(defalias 'yes-or-no-p 'y-or-n-p)
-
 ;; set system dependent environment
 ;;;;;;;;;;;;;;;;
 ;; sh을 통해 실행되지 않을 경우엔 PASS가 적용되지 않는다.
@@ -85,10 +30,63 @@
     ;; 	  ))
     )
   )
+
+;; using common lisp
+(require 'cl)
+
+;; set variables
+;;;;;;;;;;;;;;;;
+(setq home (getenv "HOME"))
+(setq emacs-dir (concat (getenv "HOME") "/basimplemacs/"))
+(setq plugins-dir (concat emacs-dir "plugins/"))
+(setq elpa-dir (concat emacs-dir "elpa/"))
+(setq org-directory (concat home "/org/"))
+;; set load path
+(add-to-list 'load-path plugins-dir)
+
+;; set builtin variable
+(setq custom-file (concat emacs-dir "custom.el"))
+(setq x-select-enable-clipboard t) ; os의 clipboard 공유하기
+(setq font-use-system-font nil)
+(setq tab-width 4)
+(setq current-language-environment "UTF-8")
+(setq default-input-method "korean-hangul")
+(setq inhibit-startup-screen t) ; 시작화면 보이지 않기
+
+;; key binding
+(global-set-key (kbd "C-x C-m") 'execute-extended-command) ;execute-extend-command -> meta+m
+
+;; shell
+;;;;;;;;;;;;;;;;
+(defalias 'sh 'eshell)
+(global-set-key (kbd "<f5>") 'eshell)
+
+;; set gui
+;;;;;;;;;;;;;;;;
+(menu-bar-mode 1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(display-time-mode 1)
+(show-paren-mode 1)
+(ido-mode -1)
+(fringe-mode nil)
+(scroll-bar-mode -1)
+;; Set Frame Title
+;;;;;;;;;;;;;;;;
+(setq frame-title-format '("%b:%f:%s"))
+
+;; (setq truncate-partial-width-windows nil)
+(setq truncate-lines nil) ; (아래나 위를 잘라서) 길이를 줄이다[짧게 하다]
+(visual-line-mode -1)
+(setq pop-up-frames nil)
+(global-auto-revert-mode -1)
+;; change from yes/no 2 y/n.
+;;;;;;;;;;;;;;;;
+(defalias 'yes-or-no-p 'y-or-n-p)
   
-  (global-set-key (kbd "S-SPC") 'toggle-korean-input-method)
+(global-set-key (kbd "S-SPC") 'toggle-korean-input-method)
   
-  ;; Setting for font
+;; Setting for font
 (if (eq system-type 'darwin)
     (progn
       ;; (set-face-attribute 'default nil :height 100)
