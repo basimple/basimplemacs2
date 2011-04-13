@@ -289,18 +289,18 @@
 
 ;; Org-mode
 ;;;;;;;;;;;;;;;;
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
-(setq org-directory "~/org/")
-(setq org-agenda-files
-      (file-expand-wildcards
-       (concat org-directory "*.org")))
+;; (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+;; (define-key global-map "\C-cl" 'org-store-link)
+;; (define-key global-map "\C-ca" 'org-agenda)
+;; (setq org-log-done t)
+;; (setq org-directory "~/org/")
+;; (setq org-agenda-files
+;;       (file-expand-wildcards
+;;        (concat org-directory "*.org")))
 
-(setq org-link-abbrev-alist
-      '(("bugzilla" . "http://bug.thinkfree.com/show_bug.cgi?id=")
-	("google"   . "http://www.google.com/search?q=")))
+;; (setq org-link-abbrev-alist
+;;       '(("bugzilla" . "http://bug.thinkfree.com/show_bug.cgi?id=")
+;; 	("google"   . "http://www.google.com/search?q=")))
 
 
 ;; BrowseUrl [[http://www.emacswiki.org/emacs/BrowseUrl#toc9]]
@@ -314,7 +314,7 @@
 
 ;; [[http://www.emacswiki.org/emacs/ClusterSSH:ccsh]]
 ;;;;;;;;;;;;;;;;
-(require 'cssh)
+;; (require 'cssh)
 
 ;; Bongo
 ;;;;;;;;;;;;;;;;
@@ -361,9 +361,9 @@
 
 ;; Android Mode
 ;;;;;;;;;;;;;;;;
-;; (add-to-list 'load-path (concat elisp-dir "android-mode/"))
-;; (require 'android-mode)
-;; (setq android-mode-sdk-dir "/opt/android-sdk-linux_x86")
+(add-to-list 'load-path (concat plugins-dir "android-mode/"))
+(require 'android-mode)
+(setq android-mode-sdk-dir (getenv "ANDROID_SDK")))
 
 ;; autoinstall
 ;;;;;;;;;;;;;;;;

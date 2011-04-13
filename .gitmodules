@@ -3,4 +3,4 @@
 	url = https://github.com/dbrock/bongo.git
 [submodule "plugins/android-mode"]
 	path = plugins/android-mode
-	url = https://github.com/dbrock/bongo.git
+	url = https://github.com/remvee/android-mode.git
