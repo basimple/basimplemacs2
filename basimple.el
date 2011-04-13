@@ -435,16 +435,23 @@
 (add-to-list 'load-path (concat plugins-dir "ecb-2.40/"))
 (require 'ecb)
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; elpa
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq package-user-dir
+  (concat emacs-dir "elpa/")
+  )
+(load "package")
+(package-initialize)
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
 ;;; interfacing with ELPA, the package archive.
 ;;; Move this code earlier if you want to reference
 ;;; packages in your .emacs.
-(when
-    (load
-     (expand-file-name (concat elpa-dir "package.el")))
-  (package-initialize))
+;; (when
+;;     (load
+;;      (expand-file-name (concat elpa-dir "package.el")))
+;;   (package-initialize))
 
 ;; ELPA:Company Mode
 ;;;;;;;;;;;;;;;;
