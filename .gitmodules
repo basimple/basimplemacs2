@@ -1,0 +1,6 @@
+[submodule "plugins/bongo"]
+	path = plugins/bongo
+	url = https://github.com/dbrock/bongo.git
+[submodule "plugins/android-mode"]
+	path = plugins/android-mode
+	url = https://github.com/dbrock/bongo.git
