@@ -29,5 +29,30 @@
   ;; 	  ))
   )
 
+;; Setting for font
+;;;;;;;;;;;;;;;;
+(if (eq system-type 'darwin)
+    (progn
+      ;; (set-face-attribute 'default nil :height 100)
+      (set-default-font "Monoco-10")
+      (set-fontset-font (frame-parameter nil 'font)
+			'hangul '("AppleGothic" . "unicode-bmp"))))
+(if (eq system-type 'gnu/linux)
+    (progn
+      ;; (set-face-attribute 'default nil :height 100)
+      (set-default-font "Monoco-10")
+      (set-fontset-font (frame-parameter nil 'font)
+			'hangul '("AppleGothic" . "unicode-bmp"))
+      ))
+(if (eq system-type 'gnu/linux)
+    (progn
+      (set-face-attribute 'default nil :font "DejaVu Sans Mono-7.2")
+      ;; (set-frame-font "DejaVu Sans Mono-7.5")
+      (set-fontset-font "fontset-default" 'hangul '("UnDotum" . "unicode-bmp"))
+      (set-fontset-font "fontset-default" 'kana '("Kochi Gothic" . "unicode-bmp"))
+      )
+  )
+
+
 (provide 'starter-kit-defuns)
 ;;; starter-kit-defuns.el ends here

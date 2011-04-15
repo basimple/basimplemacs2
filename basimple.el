@@ -102,34 +102,6 @@
   
 ;; (global-set-key (kbd "S-SPC") 'toggle-korean-input-method)
 
-;; Setting for font
-(when window-system
-  (if (eq system-type 'darwin)
-      (progn
-	;; (set-face-attribute 'default nil :height 100)
-	(set-default-font "Monoco-10")
-	(set-fontset-font (frame-parameter nil 'font)
-			  'hangul '("AppleGothic" . "unicode-bmp"))
-	)
-    (if (eq system-type 'gnu/linux)
-	(progn
-	  ;; (set-face-attribute 'default nil :height 100)
-	  (set-default-font "Monoco-10")
-	  (set-fontset-font (frame-parameter nil 'font)
-			    'hangul '("AppleGothic" . "unicode-bmp"))
-	  )
-      (if (eq system-type 'gnu/linux)
-	  (progn
-	    (set-face-attribute 'default nil :font "DejaVu Sans Mono-7.2")
-	    ;; (set-frame-font "DejaVu Sans Mono-7.5")
-	    (set-fontset-font "fontset-default" 'hangul '("UnDotum" . "unicode-bmp"))
-	    (set-fontset-font "fontset-default" 'kana '("Kochi Gothic" . "unicode-bmp"))
-	    )
-	)
-      )
-    )
-  )
-
 (if (eq system-type 'darwin) ; mac os x의 경우
     (progn
       (setq mac-command-modifier 'meta) ;; Sets the command (Apple) key as Meta
@@ -237,6 +209,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; plugins
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Auto Complete Mode
+;;;;;;;;;;;;;;;;
+(add-to-list 'load-path (concat plugins-dir "autocomplete/"))
+(require 'auto-complete)
+(global-auto-complete-mode 1)
+
+;; (require 'auto-complete+)
+;; (require 'auto-complete-extension)
+;; (require 'auto-complete-etags)
+;; (require 'auto-complete-octave)
+
 ;; http://www.emacswiki.org/emacs/AutoAsyncByteCompile
 ;;;;;;;;;;;;;;;;
 ;; (require 'auto-async-byte-compile)
@@ -514,6 +497,6 @@
 
 ;; ELPA:Company Mode
 ;;;;;;;;;;;;;;;;
-(add-to-list 'load-path (concat elpa-dir "company-0.5/"))
-(autoload 'company-mode "company" nil t)
+;; (add-to-list 'load-path (concat elpa-dir "company-0.5/"))
+;; (autoload 'company-mode "company" nil t)
 

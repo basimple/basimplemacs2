@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2002, 2003, 2009 David Ponce
 
-;; Author: Yongmun Kim <basimple@BSMBP.local>
-;; Created: 2011-04-09 20:26:06+0900
+;; Author: basimple <basimple@basimple-ub>
+;; Created: 2011-04-15 18:17:37+0900
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 

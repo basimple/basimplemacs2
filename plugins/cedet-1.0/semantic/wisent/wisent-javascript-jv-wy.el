@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2005 Joakim Verona, Eric Ludlam
 
-;; Author: Yongmun Kim <basimple@BSMBP.local>
-;; Created: 2011-04-09 20:26:17+0900
+;; Author: basimple <basimple@basimple-ub>
+;; Created: 2011-04-15 18:17:42+0900
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 
