@@ -1,21 +1,20 @@
 ;; set system dependent environment
 ;;;;;;;;;;;;;;;;
 ;; sh을 통해 실행되지 않을 경우엔 PASS가 적용되지 않는다.
-
-(if (eq system-type 'darwin)
-    (progn 
-      (setenv "ANDROID_SDK"
-	      "/Users/basimple/Deveopment/SDK/android-sdk-mac_x86")
-      (setenv "PATH"
-	      (concat
-	       (getenv "PATH") ":"
-	       (getenv "ANDROID_SDK") ":"
-	       (concat (getenv "ANDROID_SDK") "/tools/")
-	       ))
-      )
-  (if (eq system-type 'gnu/linux)
-      (setenv "ANDROID_SDK"
-	      "/opt/android-sdk-linux_x86")
+(when window-system
+  (when (eq system-type 'darwin)
+    (setenv "ANDROID_SDK"
+	    "/Users/basimple/Deveopment/SDK/android-sdk-mac_x86")
+    (setenv "PATH"
+	    (concat
+	     (getenv "PATH") ":"
+	     (getenv "ANDROID_SDK") ":"
+	     (concat (getenv "ANDROID_SDK") "/tools/")
+	     ))
+    )
+  (when (eq system-type 'gnu/linux)
+    (setenv "ANDROID_SDK"
+	    "/opt/android-sdk-linux_x86")
     (setenv "PATH"
 	    (concat
 	     (getenv "PATH") ":"
@@ -267,9 +266,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; http://www.emacswiki.org/emacs/AutoAsyncByteCompile
 ;;;;;;;;;;;;;;;;
-(require 'auto-async-byte-compile)
-;; (setq auto-async-byte-compile-exclude-files-regexp "/junk/")
-(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
+;; (require 'auto-async-byte-compile)
+;; ;; (setq auto-async-byte-compile-exclude-files-regexp "/junk/")
+;; (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 
 ;; fullscreen with wmctrl
 ;;;;;;;;;;;;;;;;
