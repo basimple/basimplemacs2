@@ -2,32 +2,7 @@
 ;;;;;;;;;;;;;;;;
 ;; sh을 통해 실행되지 않을 경우엔 PASS가 적용되지 않는다.
 (when window-system
-  (when (eq system-type 'darwin)
-    (setenv "ANDROID_SDK"
-	    "/Users/basimple/Deveopment/SDK/android-sdk-mac_x86")
-    (setenv "PATH"
-	    (concat
-	     (getenv "PATH") ":"
-	     (getenv "ANDROID_SDK") ":"
-	     (concat (getenv "ANDROID_SDK") "/tools/")
-	     ))
-    )
-  (when (eq system-type 'gnu/linux)
-    (setenv "ANDROID_SDK"
-	    "/opt/android-sdk-linux_x86")
-    (setenv "PATH"
-	    (concat
-	     (getenv "PATH") ":"
-	     "/usr/local/bin" ":"
-	     "/opt/android-sdk-linux_x86/tools" ":"
-	     "/opt/android-sdk-linux_x86/platform-tools"
-	     ))
-    ;; (setq exec-path
-    ;; 	'(
-    ;; 	  "/opt/android-sdk-linux_x86/tools"
-    ;; 	  "/opt/android-sdk-linux_x86/platform-tools"
-    ;; 	  ))
-    )
+
   )
 
 ;; using common lisp
@@ -40,8 +15,11 @@
 (setq plugins-dir (concat emacs-dir "plugins/"))
 (setq elpa-dir (concat emacs-dir "elpa/"))
 (setq org-directory (concat home "/org/"))
+(setq conf-dir (concat emacs-dir "conf/"))
+
 ;; set load path
 (add-to-list 'load-path plugins-dir)
+(add-to-list 'load-path conf-dir)
 
 ;; set builtin variable
 (setq custom-file (concat emacs-dir "custom.el"))
