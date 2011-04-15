@@ -29,17 +29,18 @@
 (global-set-key (kbd "<f5>") 'eshell)
 
 
-
 ;; set gui
 ;;;;;;;;;;;;;;;;
-(menu-bar-mode 1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(display-time-mode 1)
-(show-paren-mode 1)
-(ido-mode -1)
-(fringe-mode nil)
-(scroll-bar-mode -1)
+(when window-system
+  (menu-bar-mode 1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (display-time-mode 1)
+  (show-paren-mode 1)
+  (ido-mode -1)
+  (fringe-mode nil)
+  (scroll-bar-mode -1)
+  )
 ;; Set Frame Title
 ;;;;;;;;;;;;;;;;
 (setq frame-title-format '("%b:%f:%s"))
@@ -86,23 +87,25 @@
     )
   )
   
-  (global-set-key (kbd "S-SPC") 'toggle-korean-input-method)
-  
+;; (global-set-key (kbd "S-SPC") 'toggle-korean-input-method)
+
+(when window-system
   ;; Setting for font
-(if (eq system-type 'darwin)
-    (progn
-      ;; (set-face-attribute 'default nil :height 100)
-      (set-default-font "Monoco-10")
-      (set-fontset-font (frame-parameter nil 'font)
-			'hangul '("AppleGothic" . "unicode-bmp"))
-      )
-  (if (eq system-type 'gnu/linux)
+  (if (eq system-type 'darwin)
       (progn
-	(set-face-attribute 'default nil :font "DejaVu Sans Mono-7.2")
-	;; (set-frame-font "DejaVu Sans Mono-7.5")
-	(set-fontset-font "fontset-default" 'hangul '("UnDotum" . "unicode-bmp"))
-	(set-fontset-font "fontset-default" 'kana '("Kochi Gothic" . "unicode-bmp"))
+	;; (set-face-attribute 'default nil :height 100)
+	(set-default-font "Monoco-10")
+	(set-fontset-font (frame-parameter nil 'font)
+			  'hangul '("AppleGothic" . "unicode-bmp"))
 	)
+    (if (eq system-type 'gnu/linux)
+	(progn
+	  (set-face-attribute 'default nil :font "DejaVu Sans Mono-7.2")
+	  ;; (set-frame-font "DejaVu Sans Mono-7.5")
+	  (set-fontset-font "fontset-default" 'hangul '("UnDotum" . "unicode-bmp"))
+	  (set-fontset-font "fontset-default" 'kana '("Kochi Gothic" . "unicode-bmp"))
+	  )
+      )
     )
   )
 
@@ -129,18 +132,20 @@
   (smart-frame-positioning-mode nil)
   ;; (add-to-list 'default-frame-alist '(alpha . (90 80)))
   )
-(setq default-frame-alist
-      '(
-	(background-color . "black")
-	(foreground-color . "gray")
-	;; (left . 0) (width . 141) (height . 44)
-	))
-;; (when window-system
-;;   (set-face-foreground 'default "gray")
-;;   (set-face-background 'default "black")
-;; )
-(setq term-default-bg-color "black")
-(setq term-default-fg-color "gray")
+(when window-system
+  (setq default-frame-alist
+	'(
+	  (background-color . "black")
+	  (foreground-color . "gray")
+	  ;; (left . 0) (width . 141) (height . 44)
+	  ))
+  ;; (when window-system
+  ;;   (set-face-foreground 'default "gray")
+  ;;   (set-face-background 'default "black")
+  ;; )
+  (setq term-default-bg-color "black")
+  (setq term-default-fg-color "gray")
+  )
 
 ;; TransparentEmacs
 ;;;;;;;;;;;;;;;;
@@ -425,15 +430,17 @@
 
 ;; CEDET
 ;;;;;;;;;;;;;;;;
-(load-file (concat plugins-dir "cedet-1.0/common/cedet.el"))
-(global-ede-mode 1)                      ; Enable the Project management system
-(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion 
-(global-srecode-minor-mode 1)            ; Enable template insertion menu
+;; (add-to-list 'load-path (concat plugins-dir "cedet-1.0/common/"))
+;; (load-file (concat plugins-dir "cedet-1.0/common/cedet.el"))
+;; (require 'cedet)
+;; (global-ede-mode 1)                      ; Enable the Project management system
+;; (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion 
+;; (global-srecode-minor-mode 1)            ; Enable template insertion menu
 
 ;; ecb
 ;;;;;;;;;;;;;;;;
-(add-to-list 'load-path (concat plugins-dir "ecb-2.40/"))
-(require 'ecb)
+;; (add-to-list 'load-path (concat plugins-dir "ecb-2.40/"))
+;; (require 'ecb)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; elpa
