@@ -1,10 +1,5 @@
 ;; set system dependent environment
 ;;;;;;;;;;;;;;;;
-;; sh을 통해 실행되지 않을 경우엔 PASS가 적용되지 않는다.
-(when window-system
-
-  )
-
 ;; using common lisp
 (require 'cl)
 
@@ -389,12 +384,11 @@
 ;; WindMove
 ;;;;;;;;;;;;;;;;
 (when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings))
-(windmove-default-keybindings 'super)
-(global-set-key (kbd "s-h") 'windmove-left)
-(global-set-key (kbd "s-j") 'windmove-down)
-(global-set-key (kbd "s-k") 'windmove-up)
-(global-set-key (kbd "s-l") 'windmove-right)
+  (windmove-default-keybindings 'super))
+;; (global-set-key (kbd "m-h") 'windmove-left)
+;; (global-set-key (kbd "m-j") 'windmove-down)
+;; (global-set-key (kbd "m-k") 'windmove-up)
+;; (global-set-key (kbd "m-l") 'windmove-right)
 
 ;; Twittering
 ;;;;;;;;;;;;;;;;

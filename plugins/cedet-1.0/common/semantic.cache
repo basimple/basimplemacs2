@@ -1,0 +1,15 @@
+;; Object common/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "common/"
+  :tables (list 
+   (semanticdb-table "cedet.el"
+    :major-mode 'emacs-lisp-mode
+    :tags '(("when" code nil nil [2192 2275]) ("cl" include nil nil [2298 2311]) ("cedet-version" variable (:constant-flag t :default-value "1.0") nil [2317 2377]) ("cedet-emacs-min-version" variable (:constant-flag t :default-value "21.1") nil [2379 2473]) ("cedet-xemacs-min-version" variable (:constant-flag t :default-value "21.4") nil [2474 2566]) ("cedet-packages" variable (:constant-flag t :default-value (\` ((cedet (\, cedet-version) "common" "common") (eieio "1.3" nil "eieio") (semantic "2.0" nil "semantic/doc") (srecode "1.0" nil "srecode") (ede "1.0" nil "ede") (speedbar "1.0.3" nil "speedbar") (cogre "1.0" nil "cogre") (cedet-contrib "1.0" "contrib" nil)))) nil [2568 3186]) ("let" code nil nil [3242 5233]) ("inversion" include nil nil [5256 5276]) ("cedet" function (:user-visible-flag t) nil [5279 7249]) ("cedet-version" function (:user-visible-flag t) nil [7251 7925]) ("cedet-version-print" function nil nil [7927 9150]) ("cedet" package nil nil [9152 9168]))
+    :file "cedet.el"
+    :pointmax 9193
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre4"
+  :semanticdb-version "2.0pre4"
+  )

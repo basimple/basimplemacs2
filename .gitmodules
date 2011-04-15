@@ -4,3 +4,6 @@
 [submodule "plugins/android-mode"]
 	path = plugins/android-mode
 	url = https://github.com/remvee/android-mode.git
+[submodule "plugins/autocomplete"]
+	path = plugins/autocomplete
+	url = https://github.com/m2ym/auto-complete.git
